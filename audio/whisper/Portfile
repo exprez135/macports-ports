@@ -33,12 +33,13 @@ output.wav` to convert the file first.
 compiler.c_standard     2011
 compiler.cxx_standard   2017
 
-depends_build       port:git
-
 checksums           whisper.cpp-${version}.tar.gz \
                     rmd160  211e55a336132a878471382d8002425f069db683 \
                     sha256  2fda42b57b7b8427d724551bd041616d85401fb9382e42b0349132a28920a34f \
                     size    6216643
+
+depends_build-append \
+                    path:bin/git:git
 
 patchfiles          whisper-add-models.diff \
                     whisper-add-depends.diff \
@@ -52,7 +53,7 @@ post-patch {
         ggml/src/ggml-metal/ggml-metal.m
 }
 
-configure.args-append   -DGGML_CCACHE=OFF \
+configure.args-append   -DWHISPER_CCACHE=OFF \
                         -DWHISPER_BUILD_EXAMPLES=ON \
                         -DWHISPER_BUILD_TESTS=OFF \
                         -DWHISPER_BUILD_SERVER=OFF \
