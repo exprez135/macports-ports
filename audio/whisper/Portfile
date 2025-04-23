@@ -44,7 +44,8 @@ depends_build-append \
 patchfiles          whisper-add-models.diff \
                     whisper-add-depends.diff \
                     ggml-hard-coded.diff \
-                    add-metal-path.diff
+                    add-metal-path.diff \
+                    binary-ops-casting.diff
 
 post-patch {
     reinplace "s|__PREFIX__|${prefix}|" \
